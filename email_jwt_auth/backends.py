@@ -10,7 +10,7 @@ from .models import User
 class JWTAuthentication(authentication.BaseAuthentication):
     """Пишем собственный бэкенд аутентификации"""
 
-    authentication_header_prefix = 'Token'
+    authentication_header_prefix = 'Bearer'
 
     def authenticate(self, request):
         """Возвращаем None если не хотим, (user, token) если хотим"""
@@ -27,7 +27,7 @@ class JWTAuthentication(authentication.BaseAuthentication):
 
         elif len(auth_header) > 2:
             return None
-        
+
         prefix = auth_header[0].decode('utf-8')
         token = auth_header[1].decode('utf-8')
 
