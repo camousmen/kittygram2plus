@@ -50,3 +50,9 @@ class CatSerializer(serializers.ModelSerializer):
                 AchievementCat.objects.create(
                     achievement=current_achievement, cat=cat)
             return cat
+
+    def validate_birth_year(self, value):
+        year = dt.date.today().year
+        if not (year-40 < value <= year):
+            raise serializers.ValidationError('Неправильный год рождения!')
+        return value
