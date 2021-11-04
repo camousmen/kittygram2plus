@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'cats.apps.CatsConfig',
     'django_filters', # подключаем фильтры
     'drf_yasg',
+    'rest_framework_simplejwt',
+    'email_jwt_auth'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +136,7 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'email_jwt_auth.backends.JWTAuthentication',
     ],
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.UserRateThrottle',

@@ -17,8 +17,9 @@ router.register(r'achievements', AchievementViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    #path('auth/', include('djoser.urls')),
+    #path('auth/', include('djoser.urls.jwt')),
+    path('auth/', include('email_jwt_auth.urls')),
 ]
 
 schema_view = get_schema_view(
